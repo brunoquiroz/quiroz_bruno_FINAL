@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Institución</title>
+</head>
+<body>
+    <h2>Buscar Institución</h2>
+    <form id="institucion-search-form" method="post" class="mb-4">
+        {% csrf_token %}
+        <label for="id_institucion">ID Institución:</label>
+        <input type="text" id="id_institucion" name="id_institucion" required>
+        <button type="submit">Buscar Institución</button>
+    </form>
+</body>
+</html>

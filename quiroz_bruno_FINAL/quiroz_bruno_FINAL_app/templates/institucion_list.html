@@ -1,0 +1,32 @@
+{% extends 'quiroz_bruno_FINAL_app/base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Listado de Instituciones</h2>
+        <a href="{% url 'institucion-list-create' %}" class="btn btn-primary">Nueva Institución</a>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for institucion in instituciones %}
+                    <tr>
+                        <td>{{ institucion.id }}</td>
+                        <td>{{ institucion.nombre }}</td>
+                        <td>
+                            <a href="{% url 'institucion-detail' institucion.id %}" class="btn btn-info btn-sm">Detalles</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

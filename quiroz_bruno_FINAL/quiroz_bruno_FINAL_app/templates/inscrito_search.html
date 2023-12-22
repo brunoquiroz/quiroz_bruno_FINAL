@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Inscrito</title>
+</head>
+<body>
+    <h2>Buscar Inscrito</h2>
+    <form id="inscrito-search-form" method="post" class="mb-4">
+        {% csrf_token %}
+        <label for="id_persona">ID Persona:</label>
+        <input type="text" id="id_persona" name="id_persona" required>
+        <button type="submit">Buscar Inscrito</button>
+    </form>
+</body>
+</html>

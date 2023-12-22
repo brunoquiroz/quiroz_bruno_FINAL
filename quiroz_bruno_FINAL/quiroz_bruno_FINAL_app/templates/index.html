@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Quiroz Bruno - Seminario{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container mt-5">
+        <div class="card">
+                <div class="card-body text-center">
+                    <h2 class="card-title">Bruno Andres Quiroz Monte</h2>
+                    <h2 class="card-title">Programación Back End (TI2041/AP-171-N4/D Temuco B5 )</h2>
+                    <h2 class="card-title">RUT: 20.950.515-0</h2>
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                <a href="{% url 'inscrito-list-create' %}" class="btn btn-primary btn-lg mr-2">Agregar Inscritos</a>
+                <a href="{% url 'institucion-list-create' %}" class="btn btn-primary btn-lg">Agregar Instituciones</a>
+            </div>
+<p></p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Buscar Inscrito</h5>
+                <form action="{% url 'search' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_persona">ID Persona (Inscrito):</label>
+                        <input type="text" class="form-control" name="id_persona" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Buscar Inscrito</button>
+                </form>
+                {% if inscrito_result %}
+                    <div class="mt-3">
+                        <p class="card-text">Resultado de la búsqueda:</p>
+                        <p>ID Persona: {{ inscrito_result.inscrito.id_persona }}</p>
+                        <p>Nombre: {{ inscrito_result.inscrito.nombre_persona }}</p>
+                        <p>Telefono: {{ inscrito_result.inscrito.telefono }}</p>
+                        <p>Fecha de Inscripción: {{ inscrito_result.inscrito.fecha_inscripcion }}</p>
+                        <p>Hora de Inscripción: {{ inscrito_result.inscrito.hora_inscripcion }}</p>
+                        <p>Observación: {{ inscrito_result.inscrito.observacion }}</p>
+                        <p>Institución: {{ inscrito_result.institucion.nombre }}</p>
+                        <p>Estado: {{ inscrito_result.inscrito.estado }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Buscar Institución</h5>
+                    <form action="{% url 'search' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_institucion">ID Institución:</label>
+                            <input type="text" class="form-control" name="id_institucion" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Buscar Institución</button>
+                    </form>
+                    {% if institucion_result %}
+                        <div class="mt-3">
+                            <p class="card-text">Resultado de la búsqueda:</p>
+                            <p>{{ institucion_result }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+

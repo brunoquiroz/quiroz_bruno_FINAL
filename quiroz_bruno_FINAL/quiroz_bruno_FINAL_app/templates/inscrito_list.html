@@ -1,0 +1,44 @@
+{% extends 'quiroz_bruno_FINAL_app/base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Listado de Inscritos</h2>
+        <a href="{% url 'inscrito-list-create' %}" class="btn btn-primary">Nuevo Inscrito</a>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Fecha Inscripción</th>
+                    <th>Institución</th>
+                    <th>Hora Inscripción</th>
+                    <th>Estado</th>
+                    <th>Observación</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inscrito in inscritos %}
+                    <tr>
+                        <td>{{ inscrito.id_persona }}</td>
+                        <td>{{ inscrito.nombre_persona }}</td>
+                        <td>{{ inscrito.telefono }}</td>
+                        <td>{{ inscrito.fecha_inscripcion }}</td>
+                        <td>{{ inscrito.institucion.nombre }}</td>
+                        <td>{{ inscrito.hora_inscripcion }}</td>
+                        <td>{{ inscrito.estado }}</td>
+                        <td>{{ inscrito.observacion }}</td>
+                        <td>
+                            <a href="{% url 'inscrito-detail' inscrito.id_persona %}" class="btn btn-info btn-sm">Detalles</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

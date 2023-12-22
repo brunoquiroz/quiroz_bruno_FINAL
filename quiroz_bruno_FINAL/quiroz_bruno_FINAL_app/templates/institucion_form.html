@@ -1,0 +1,18 @@
+{% extends 'quiroz_bruno_FINAL_app/base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Formulario de Institución</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="{% url 'institucion-list-create' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
